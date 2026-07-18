@@ -4,6 +4,7 @@
 This project involved developing a comprehensive Business Intelligence system to transform raw loan data into actionable financial intelligence. Managing a portfolio of **38,576 loans** totaling **$435.76M**, I designed a diagnostic dashboard to identify the drivers of loan defaults and capital recovery. By analyzing borrower behavior, I moved beyond simple volume tracking to provide the lending team with a clear "action plan"—highlighting exactly who to lend to, which high-risk segments to restrict, and why traditional income verification is failing to predict default risk.
 
 ![Loan Portfolio Dashboard Overview](Loans%20Image.png)
+![Loan Portfolio Dashboard Overview](Borrower.png)
 
 ## Introduction
 In the banking sector, high lending volume is often mistaken for success, but without understanding the risk behind those loans, a bank can easily lose more in defaults than it makes in interest. This project was born from the need to move the lending team away from reactive, static reports and toward a proactive, data-driven strategy. 
