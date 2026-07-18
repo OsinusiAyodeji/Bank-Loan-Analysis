@@ -59,10 +59,54 @@ To ensure clean, efficient data modeling within Power BI, the processing pipelin
 * **Data Load Optimization**: Reviewed the full schema and explicitly disabled the load for redundant or uninformative columns that did not contribute to solving the target risk and capital tracking goals, significantly boosting dashboard responsiveness.
 
 
+## Analysis & Custom Logic
+
+To turn raw lending numbers into clear business strategies, I used DAX to build custom loan tracking rules, borrower profile groupings, and calendar logic:
+
+### 1. The Loan Health Classification
+Instead of manually sorting through various transaction stages, I created a simple rule to instantly separate successful lending from financial loss:
+*   **Good Loans**: Any loan where the status is **Fully Paid** or **Current**. This represents healthy, active capital returning to the bank.
+*   **Bad Loans**: Any loan marked as **Charged Off**, meaning the borrower defaulted and the bank has written off the debt as unrecovered capital.
+
+### 2. Strategic Risk Grade Consolidation
+To make risk tracking easier for the executive team, I grouped the bank's traditional individual letter grades (A through G) into three broad buckets:
+*   **Low Risk (Grades A & B)**: The foundation of the portfolio, acting as the primary engine for safe, predictable returns.
+*   **Medium Risk (Grades C & D)**: Moderate performance that requires balanced credit limits.
+*   **High Risk (Grades E, F, & G)**: Vulnerable accounts monitored closely to see if their higher interest rates successfully offset their high default rates.
+
+### 3. Borrower Profiling Buckets
+*   **DTI (Debt-to-Income) Buckets**: Grouped borrowers based on their monthly debt obligations relative to their income. This allowed me to test whether higher DTI directly translates to higher defaults.
+*   **Employment Length Buckets**: Structured raw employment years into clean time bands to evaluate whether borrower career stability impacts their ability to repay.
+*   **Dynamic Calendar Engine**: Generated a central Date Table connected to `issue_date` and `last_payment_date`. This allows the bank to filter the dashboard by any month or year to track whether default rates are improving over time.
 
 
+## Key Insights
+
+By interacting with the visual dashboard and filtering across various dimensions, several deep structural patterns become clear regarding how the bank's capital is performing:
+
+* **The Portfolio Baseline**: Out of **38,576 loans issued** totaling **$435.76M**, the bank has recovered **$473.07M**, yielding a healthy global recovery rate of **108.56%**. However, underneath this healthy surface sits a **13.82% default rate**, meaning $66M in unrecovered capital has been written off as "Bad Loans."
+* **The High-Yield Engine**: Low-Risk categories (Grades A & B) represent the true powerhouse of the bank's liquidity. They account for over **$211.0M** in fully paid capital with a default rate of just 8.9% on standard 36-month terms. Conversely, High-Risk grades (E, F, & G) account for the vast majority of written-off debt, losing a combined **$26.6M**.
+* **The Core Churn Drivers**: 
+    * **Loan Purpose**: Small Business loans carry an incredibly dangerous **25.6% default rate**, making it the highest risk category in the entire portfolio.
+    * **Contract Term Length**: 60-month terms default at exactly *double* the rate of 36-month terms (**22% vs. 11%**). 
+    * **The Geography Risk Trap**: The interactive state lookup shows massive geographic spikes in defaults. For example, while Florida (FL) shows a steady risk profile, Nebraska (NE) exhibits a catastrophic **60% default rate**.
+* **The Income Verification Blindspot**: Counterintuitively, the data reveals that borrowers whose incomes were "Verified" actually default at a *higher* rate (**15.7%**) than those who were "Not Verified" (**12.2%**). This highlights a major gap where traditional checklist verifications are missing actual risk.
 
 
+## Recommendations
+
+Based on the strategic patterns uncovered by the dashboard data, the bank should implement the following three actionable adjustments immediately:
+
+1. **Aggressively Scale the Grade A/B 36-Month Segment**: Offer lower application processing fees and priority automated underwriting approvals for Grade A and B applicants opting for 36-month terms. This segment represents the lowest default risk and guarantees rapid cash liquidity back to the bank.
+2. **Revamp Underwriting Policies for High-Risk Buckets**: Tighten credit requirements for high-risk combinations. Specifically, the bank should cap the maximum allowable loan amount for small business ventures, mandate stricter asset collateral for any 60-month loans, and increase interest premiums on Grades E through G to successfully cover the $26.6M default leak.
+3. **De-emphasize Standard Income Verification**: Stop relying on simple income verification as a primary safety net. Underwriting models should be adjusted to place heavy statistical weight on Debt-to-Income (DTI) ratios and historical loan grade performance rather than static document checks.
+
+
+## Conclusion
+
+This project successfully demonstrates how a financial institution can move past rigid, historical summary spreadsheets to gain true strategic clarity over its credit operations. By implementing automated DAX categorization and custom borrower buckets within Power BI, I transformed a massive portfolio registry into an interactive risk diagnostic system.
+
+Through the integration of dynamic filters and structured visual cross-filtering, the bank no longer has to guess where its leakages are. Management now possesses a distinct asset-allocation blueprint to protect the bank's **$435M+ portfolio capital**, maximize cash liquidity, and systematically drive down default metrics.
 
 
 
